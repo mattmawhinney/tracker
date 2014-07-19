@@ -9,6 +9,32 @@ module.exports = {
 
   attributes: {
 
+
+  	name: {
+  		type: 'string',
+  		required: true
+  	},
+
+  	description: {
+  		type: 'string',
+  		required: true
+  	},
+
+  	startDate: {
+  		type: 'date',
+  		required: true
+  	},
+
+  	endDate: {
+  		type: 'date',
+  		required: true
+  	},
+
+  	phase : {
+  		type: 'date'
+
+  	}
+
   }
 };
 
