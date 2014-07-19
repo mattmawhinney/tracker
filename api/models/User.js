@@ -14,11 +14,13 @@
 
 module.exports = {
 
+	//schema true only saves attributes listed specified in model to DB 
+
+  schema: true,
+
   attributes: {
 
-  	//schema true only saves attributes listed specified in model to DB 
-
-  	schema: true,
+  	
   	
   	name: {
   		type: 'string',
