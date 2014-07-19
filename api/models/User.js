@@ -16,7 +16,9 @@ module.exports = {
 
   attributes: {
 
+  	//schema true only saves attributes listed specified in model to DB 
 
+  	schema: true,
   	
   	name: {
   		type: 'string',
@@ -36,17 +38,17 @@ module.exports = {
 
   	encryptedPassword: {
   		type: 'string'
-  	},
+  	}
 
 
-  	toJSON: function() {
-      var obj = this.toObject();
-      delete obj.password;
-      delete obj.confirmation;
-      delete obj.encryptedPassword;
-      delete obj._csrf;
-      return obj;
-    }
+  	// toJSON: function() {
+   //    var obj = this.toObject();
+   //    delete obj.password;
+   //    delete obj.confirmation;
+   //    delete obj.encryptedPassword;
+   //    delete obj._csrf;
+   //    return obj;
+   //  }
     
   }
 
