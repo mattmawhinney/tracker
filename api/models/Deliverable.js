@@ -5,6 +5,10 @@
 * @docs        :: http://sailsjs.org/#!documentation/models
 */
 
+
+//belongs to a user
+//belongs to a project
+
 module.exports = {
 
   attributes: {

@@ -6,9 +6,16 @@
  *
  */
 
+ //Associations: https://github.com/balderdashy/waterline-docs/blob/master/associations.md
+ //has many projects
+ //has many deliverable through projects 
+
+
 module.exports = {
 
   attributes: {
+
+
   	
   	name: {
   		type: 'string',

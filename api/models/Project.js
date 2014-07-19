@@ -5,10 +5,16 @@
 * @docs        :: http://sailsjs.org/#!documentation/models
 */
 
+
+// belongs to many users aliased as contributors
+//has many deliverables
+
+
 module.exports = {
 
   attributes: {
 
+  	
 
   	name: {
   		type: 'string',
@@ -34,6 +40,8 @@ module.exports = {
   		type: 'date'
 
   	}
+
+
 
   }
 };
