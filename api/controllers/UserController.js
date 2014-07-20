@@ -54,7 +54,7 @@ module.exports = {
         user: user
       });
     });
-  }
+  },
 
 
 
@@ -84,6 +84,6 @@ module.exports = {
     });
   },
 
-  
+
 
 };
