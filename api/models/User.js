@@ -6,52 +6,55 @@
  *
  */
 
- //Associations: https://github.com/balderdashy/waterline-docs/blob/master/associations.md
- // https://github.com/balderdashy/sails/issues/124
- //has many projects
- //has many deliverable through projects 
-
-
 module.exports = {
-
-	//schema true only saves attributes listed specified in model to DB 
 
   schema: true,
 
   attributes: {
-
-  	
-  	
-  	name: {
-  		type: 'string',
-  		required: true
-  	},
-
-  	title: {
-  		type: 'string'
-  	},
-
-  	email: {
-  		type: 'string',
-  		email: true,
-  		required: true,
-  		unique: true
-  	},
-
-  	encryptedPassword: {
-  		type: 'string'
-  	}
-
-
-  	// toJSON: function() {
-   //    var obj = this.toObject();
-   //    delete obj.password;
-   //    delete obj.confirmation;
-   //    delete obj.encryptedPassword;
-   //    delete obj._csrf;
-   //    return obj;
-   //  }
     
+    name: {
+      type: 'string',
+      required: true
+    },
+
+    title: {
+      type: 'string'
+    },
+
+    email: {
+      type: 'string',
+      email: true,
+      required: true,
+      unique: true
+    },
+
+    encryptedPassword: {
+      type: 'string'
+    },
+
+    toJSON: function() {
+      var obj = this.toObject();
+      delete obj.password;
+      delete obj.confirmation;
+      delete obj.encryptedPassword;
+      delete obj._csrf;
+      return obj;
+    }
+
+  },
+
+  beforeCreate: function (values, next) {
+
+    // This checks to make sure the password and password confirmation match before creating record
+    if (!values.password || values.password != values.confirmation) {
+      return next({err: ["Password doesn't match password confirmation."]});
+    }
+
+    require('bcrypt').hash(values.password, 10, function passwordEncrypted(err, encryptedPassword) {
+      if (err) return next(err);
+      values.encryptedPassword = encryptedPassword;
+      next();
+    });
   }
 
 };
