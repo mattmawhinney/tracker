@@ -13,10 +13,10 @@ module.exports = {
   }
   */
 
+  // This loads the sign-up page --> new.ejs
   'new': function (req, res) {
   	res.view();
   },
-
 
   create: function (req, res, next) {
 
@@ -41,10 +41,19 @@ module.exports = {
 	      // redirect to the show action
 	      // From ep1-6: //res.json(user); 
 
-	      res.json(user);
-	      // res.redirect('/user/show/'+user.id);
+	      res.redirect('/user/show/'+user.id);
 	  });
 	},
-  
+
+	// render the profile view (e.g. /views/show.ejs)
+  show: function (req, res, next) {
+    User.findOne(req.param('id'), function foundUser (err, user) {
+      if (err) return next(err);
+      if (!user) return next();
+      res.view({
+        user: user
+      });
+    });
+  }
 
 };
