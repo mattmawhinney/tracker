@@ -93,6 +93,9 @@ module.exports = {
     });
   },
 
+
+  //add an are your sure alert?
+
   destroy: function (req, res, next) {
 
     User.findOne(req.param('id'), function foundUser (err, user) {
