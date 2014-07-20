@@ -56,8 +56,6 @@ module.exports = {
     });
   },
 
-
-
   index: function (req, res, next) {
 
     // Get an array of all users in the User collection(e.g. table)
@@ -84,6 +82,15 @@ module.exports = {
     });
   },
 
+  // process the info from edit view
+  update: function (req, res, next) {
+    User.update(req.param('id'), req.params.all(), function userUpdated (err) {
+      if (err) {
+        return res.redirect('/user/edit/' + req.param('id'));
+      }
 
+      res.redirect('/user/show/' + req.param('id'));
+    });
+  }
 
 };
