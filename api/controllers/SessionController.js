@@ -10,6 +10,9 @@ var bcrypt = require('bcrypt');
 module.exports = {
 
   'new': function(req, res) {
+  	// introspect the session object before a new session is created
+  	// console.log(req.session);
+  	req.session.authenticated = true;
 		res.view('session/new');
 	}
 
