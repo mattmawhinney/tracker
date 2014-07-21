@@ -41,7 +41,7 @@ module.exports = {
 	      // redirect to the show action
 	      // From ep1-6: //res.json(user); 
 
-	      res.redirect('/user/show/'+user.id);
+	      // res.redirect('/user/show/'+user.id);
 	  });
 	},
 
