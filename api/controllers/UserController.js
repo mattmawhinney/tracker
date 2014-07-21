@@ -37,11 +37,19 @@ module.exports = {
 	        return res.redirect('/user/new');
 	      }
 
-	      // After successfully creating the user
-	      // redirect to the show action
-	      // From ep1-6: //res.json(user); 
+        //Sign User in 
 
-	      // res.redirect('/user/show/'+user.id);
+        req.session.authenticated = true; 
+        req.session.User = user; 
+
+        console.log(req.session);
+
+	      // After successfully creating and signing-in the User
+	      // redirect to the show action
+	      //insted of displaying a json objects 
+        // From ep1-6: res.json(user); 
+
+	      res.redirect('/user/show/'+user.id);
 	  });
 	},
 

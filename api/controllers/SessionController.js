@@ -70,9 +70,11 @@ module.exports = {
 				req.session.authenticated = true;
 				req.session.User = user;
 
+				console.log(req.session);
+
 				//Redirect to their profile page (e.g. /views/user/show.ejs)
 				res.redirect('/user/show/' + user.id);			
-				console.log(req.session);	
+					
 			});
 		});
 	},
