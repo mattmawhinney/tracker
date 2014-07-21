@@ -20,6 +20,12 @@ module.exports.policies = {
   // (`true` allows public access)
   '*': 'flash',
 
+   user: {
+  	'new': "flash",
+  	'*': "sessionAuth",
+  },
+
+
 	// Here's an example of mapping some policies to run before
   // a controller and its actions
 	// RabbitController: {
