@@ -11,12 +11,11 @@ module.exports = {
 
   'new': function(req, res) {
   	// introspect the session object before a new session is created
-  	// console.log(req.session);
+  	console.log(req.session);
   	// req.session.authenticated = true;
 		res.view('session/new');
 	},
 
-	
 
 	create: function(req, res, next) {
 
@@ -72,18 +71,19 @@ module.exports = {
 				req.session.User = user;
 
 				//Redirect to their profile page (e.g. /views/user/show.ejs)
-				res.redirect('/user/show/' + user.id);				
+				res.redirect('/user/show/' + user.id);			
+				console.log(req.session);	
 			});
 		});
 	},
 
-	// destroy: function(req, res, next) {
+	destroy: function(req, res, next) {
 
-	// 		// Wipe out the session (log out)
-	// 		req.session.destroy();
+			// Wipe out the session (log out)
+			req.session.destroy();
 
-	// 		// Redirect the browser to the sign-in screen
-	// 		res.redirect('/session/new');
+			// Redirect the browser to the sign-in screen
+			res.redirect('/session/new');
 			
-	// }
+	}
 };
