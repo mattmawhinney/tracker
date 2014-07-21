@@ -12,7 +12,7 @@ module.exports = function(req, res, ok) {
 	var sessionUserMatchesId = req.session.User.id === parseInt(req.param('id'));
 	var isAdmin = req.session.User.admin;
 
-	//intro spect variables used in control flow below 
+	//introspect variables used in control flow below 
 	// console.log(sessionUserMatchesId, isAdmin)
 	
 	// The requested id does not match the user's id,

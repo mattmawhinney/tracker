@@ -28,13 +28,18 @@ module.exports = {
       unique: true
     },
 
-    admin: {
+    encryptedPassword: {
+      type: 'string'
+    },
+
+    online: {
       type: 'boolean',
       defaultsTo: false
     },
 
-    encryptedPassword: {
-      type: 'string'
+    admin: {
+      type: 'boolean',
+      defaultsTo: true
     },
 
     toJSON: function() {
@@ -48,7 +53,8 @@ module.exports = {
 
   },
 
-    beforeValidation: function (values, next) {
+
+  beforeValidation: function (values, next) {
     if (typeof values.admin !== 'undefined') {
       if (values.admin === 'unchecked') {
         values.admin = false;
@@ -69,6 +75,7 @@ module.exports = {
     require('bcrypt').hash(values.password, 10, function passwordEncrypted(err, encryptedPassword) {
       if (err) return next(err);
       values.encryptedPassword = encryptedPassword;
+      // values.online= true;
       next();
     });
   }

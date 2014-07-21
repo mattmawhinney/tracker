@@ -6,10 +6,10 @@
 		<input value="<%= user.email %>" name="email" type="text" class="form-control"/>
 		<% if (session.authenticated && session.User.admin) { %>
 			<% if (user.admin) { %>
-				<input type="hidden" name="admin" value="unchecked">
+				<!-- <input type="hidden" name="admin" value=""> -->
 				<label class="checkbox"><input type="checkbox" name="admin" checked> Admin</label>
 			<% } else { %>
-				<input type="hidden" name="admin" value="unchecked">
+				<!-- <input type="hidden" name="admin" value="unchecked"> -->
 				<label class="checkbox"><input type="checkbox" name="admin"> Admin</label>
 			<% } %> 
 		<% } %> 
