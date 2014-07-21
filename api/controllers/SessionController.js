@@ -11,7 +11,7 @@ module.exports = {
 
   'new': function(req, res) {
   	// introspect the session object before a new session is created
-  	console.log(req.session);
+  	
   	// req.session.authenticated = true;
 		res.view('session/new');
 	},
@@ -19,11 +19,15 @@ module.exports = {
 
 	create: function(req, res, next) {
 
+		// console.log(req.session);
+		console.log(req.param);
+
 		// Check for email and password in params sent via the form, if none
 		// redirect the browser back to the sign-in form.
 		if (!req.param('email') || !req.param('password')) {
 			 // return next({err: ["Password doesn't match password confirmation."]});
 
+			
 			var usernamePasswordRequiredError = [{name: 'usernamePasswordRequired', message: 'You must enter both a username and password.'}]
 
 				// Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
@@ -70,10 +74,21 @@ module.exports = {
 				req.session.authenticated = true;
 				req.session.User = user;
 
+				// If the user is also an admin redirect to the user list (e.g. /views/user/index.ejs)
+				// This is used in conjunction with config/policies.js file
+				if (req.session.User.admin) {
+					res.redirect('/user');
+					return;
+				}
+
 				console.log(req.session);
 
+
 				//Redirect to their profile page (e.g. /views/user/show.ejs)
-				res.redirect('/user/show/' + user.id);			
+				res.redirect('/user/show/' + user.id);		
+
+				// console.log(req.param('id'));
+				
 					
 			});
 		});

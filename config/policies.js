@@ -22,17 +22,21 @@ module.exports.policies = {
 
    user: {
   	'new': "flash",
-    'create': "flash",
-  	'*': "sessionAuth",
-  },
+    create: "flash",
+    show: "userCanSeeProfile",
+    
+    '*': "admin"
+   }
 
-   project: {
-  	'*': "sessionAuth",
-  },
+  // ,
 
-   deliverable: {
-  	'*': "sessionAuth",
-  },
+  //  project: {
+  // 	'*': "sessionAuth",
+  // },
+
+  //  deliverable: {
+  // 	'*': "sessionAuth",
+  // },
 
 
 	// Here's an example of mapping some policies to run before
